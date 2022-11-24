@@ -22,5 +22,21 @@ FORMULÁRIO CONTROLADO  = estado fica no componente
 
 . cria state value, setValue
 
-. cria função onChange com paramentro event e dentro da função dar um setValue(event.target.setValue), dessa forma ele vai captuar o valor digitado no input
+. cria função onChange com paramentro event e dentro da função dar um setValue(event.target.setValue), dessa forma ele vai capturar o valor digitado no input
 
+
+CONTROLANDO COM OBJETO
+
+.criar controlled-data.js e nele passar formulario mais complexo
+
+. passar state form, setFormValues começando com um objeto com os campos name: '',email:'',uf:'',subscribe  dentro do state e criar seus respectivos inputs
+
+. no input o value={form.name} pq agora existe um segundo nível, passar a propriedade 'name' nos input, declarando name pra 1 e email pra 2
+
+. dentro da função onChange estanciar o event.target.name em formField
+
+. Ainda no onChange no setFormValues passar uma função declaranbdo valor atual passando por spread operator e retornando o formField pegando o valor curr => { return { ...curr, [formField]}}
+
+. Criar array co estados do Brasil e estanciar em ufs, no JSX criar a tag <select name value onChange> dentro dela passar um ufs.map(uf => <option>)
+
+. criar input subscribe do tipo checkbox, na função checkbox criar const value passando condicional com operadores ternários pra retornar checked ou value 
