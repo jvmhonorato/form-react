@@ -40,3 +40,19 @@ CONTROLANDO COM OBJETO
 . Criar array co estados do Brasil e estanciar em ufs, no JSX criar a tag <select name value onChange> dentro dela passar um ufs.map(uf => <option>)
 
 . criar input subscribe do tipo checkbox, na função checkbox criar const value passando condicional com operadores ternários pra retornar checked ou value 
+
+
+VALIDAÇÃO 
+
+
+. Criar controlled-validation.js
+
+. Criar um vetor erros atribuindo um boolean ao name e email,
+emseguida criar condicionais: se form.name e form.email === '' || form.email.indexOf('@') < 0 e etc cambia status de error pra true
+
+
+. no JSX criar condicinal caso error.name seja true renderizar mensagem
+
+. Estanciar em hasError um Object.keys.reduce pegando todos os valores do array erros e manipulando de forma conjunta o valor anterior e o valor atual
+
+. no button get value passar propriedade disabled={hasError } so irá renderizar o button se o error for false
