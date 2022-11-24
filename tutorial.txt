@@ -1,0 +1,26 @@
+
+
+
+. npm create next-app/ configurar instalação no terminal
+
+. configurar prettierrc
+
+
+
+FORMULÁRIO NÃO CONTROLADO = dados ficam no navegador
+
+. criar pages/uncontrolled.js criar componete e exportar, adicionar o useRef() estanciar e usar no ref do campo input
+
+.add button com evento onClick chamando chamando uma função e dentro dela a estancia de useRef.current.value irá retonar o que tiver sendo digitado no input
+
+. cria state show, setShow pra cria condicionall de renderizaõa do input
+
+
+FORMULÁRIO CONTROLADO  = estado fica no componente
+
+. não usa o useRef, passar value={value} e o evento onChange={onChange}}
+
+. cria state value, setValue
+
+. cria função onChange com paramentro event e dentro da função dar um setValue(event.target.setValue), dessa forma ele vai captuar o valor digitado no input
+
