@@ -1,7 +1,34 @@
 import {Formik, Form, Field} from 'formik'
+import { useEffect } from 'react'
 import * as yup from 'yup'
 
-const ufs = ['BA','MG', 'SP','SC','RJ']
+const ufs = ['AC - Acre',
+'AL - Alagoas',
+'AP - Amapá',
+'AM - Amazonas',
+'BA - Bahia',
+'CE - Ceará',
+'DF - Distrito Federal',
+'ES - Espírito Santo',
+'GO - Goías',
+'MA - Maranhão',
+'MT - Mato Grosso',
+'MS - Mato Grosso do Sul',
+'MG - Minas Gerais',
+'PA - Pará',
+'PB - Paraíba',
+'PR - Paraná',
+'PE - Pernambuco',
+'PI - Piauí',
+'RJ - Rio de Janeiro',
+'RN - Rio Grande do Norte',
+'RS - Rio Grande do Sul',
+'RO - Rondônia',
+'RR - Roraíma',
+'SC - Santa Catarina',
+'SP - São Paulo',
+'SE - Sergipe',
+'TO - Tocantins']
 
 //yup requirements objects
 const schema = yup.object().shape({
@@ -21,12 +48,34 @@ const FormFormik = () => {
            subscribe: false 
         }}
         onSubmit={async(values)=> {
-            console.log(values)
+            const data = await fetch('/api/users', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(values)
+            })
+            const json = await data.json()
         }}
         validationSchema={schema}
         >
             {
-                ({values, errors,touched}) => (
+                //render prop
+                ({values, errors,touched, setFieldValue}) => {
+                    useEffect(()=> {
+                        const loadData = async() => {
+                            const data = await fetch('/api/users/1')
+                            const json = await  data.json()
+                            setFieldValue('name', json.name)
+                            setFieldValue('email', json.email)
+                            setFieldValue('uf', json.uf)
+                            setFieldValue('subscribe', json.subscribe)
+                        }
+                        loadData()
+                        
+                    },[])
+                    return(
                     <Form>
                         <label>
                             Name:
@@ -56,8 +105,8 @@ const FormFormik = () => {
                         <pre>{JSON.stringify(values, null, 2)}</pre>
                         <pre>{JSON.stringify(errors, null, 2)}</pre>
                     </Form>
-                )
-            }
+                )}}
+            
         </Formik>
         </>
     )

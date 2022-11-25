@@ -117,6 +117,10 @@ FORMIK YUP VALIDATION
 
 .No <Formik validationSchema={schema}> passar o validationSchema chamando o schema 
 
-.Passar propriedades da função principal do Formik (values, errors, touched)
+.Passar propriedades da função principal do Formik RENDER PROP(values, errors, touched, setFieldValue)
 
 . usar o touched em uma condicional com operador ternário pra cada campo de input
+
+START DATA SUBMIT
+
+. no render prop passar useEffect(() =>{},[]) com a função async loadData e dentro dela pegando os dados com fetch , estnacia em json() em seguida passar o setFieldValue praq inserir os valores nos campos de input
