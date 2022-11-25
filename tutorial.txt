@@ -96,3 +96,14 @@ ADD SUBMIT
 
 . criar state sending, setSending começando em false, depois pra evitar que o usuario envie varias vezes o formulário, por o setSending(true )no inicio da função submit e setSending(false )no final da função submit, depois no input button passar disebled={sending} ou seja enquanto ele tiver ativo não poderá enviar mais de uma vez 
 
+
+FORMIK
+
+. instalar formik: npm install formik
+
+.formik-render-prop.js:
+
+. importar Formik, Form, Field de formik
+
+. criar a tag <Formik initialValues={modelos dos campos} onSubmit={ação a ser tomada}> criar uma {({})=> (<Form> <Field/></Form>)}
+crair os capos de inpute como <Field/>

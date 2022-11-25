@@ -100,20 +100,19 @@ const FormControlled = () => {
          {errors.email && <p>{errors.email}</p>}
          Desejo receber novidade por email:
          <input type='checkbox'name='subscribe' value={form.subscribe} checked={form.subscribe} onChange={onChange} /><br/>
-         {form.subscribe && (<p>Obrigado por permitir que enviemos emailas pra vc!</p>)}
+         {form.subscribe && (<p>Obrigado por permitir que enviemos emails pra vc!</p>)}
         
          <button type="button" onClick={getValue} >
             get value
          </button>
-         <button type="button" onClick={submit} >
+         <button type="button" onClick={submit} disabled={sending}>
             submit form
          </button>
          <select name='uf' onChange={onChange} value={form.uf}>
             <option>Selecione UF</option>
             {ufs.map(uf => <option key={uf} value={uf}>{uf}</option>)}
          </select>
-         {/* use(curr ) => (!curr) pra variar de true ou false a cada click */}
-        
+    
          <pre>{JSON.stringify(form,null,2)}</pre>
          </>}
         </>
