@@ -73,3 +73,19 @@ dar um try{await schema.validate(form, { abortEarly: false})}catch(){}  OBS: abo
 
 . Pra mostrar na tela vamos criar um state hasError, sethasError(false) e  errors , setError({}) e no JSX passar {errors.name && <p>mensaagem</p>}
 
+
+CONSUMINDO API
+
+. criar pasta users/[id].js, index.js com codigo pra simular servidor mockado
+
+. criar arquivo config.js com array de objetos 
+
+. criar mais um useEffect dentro dele criar loadData uma função async e dentro dela chamar o fetch API depois estanciar em json
+
+. criar state loaded,setLoaded e pasar o setloaded no final do useEffect(true)
+
+. Pra setar os valores no Form no final do useEffect dar um setFormValues({}) passando os valores em json vindos do fetch do
+
+.criar uma condicional no JSX  com o state {loaded $$ <></>} pra só renderizar o form qunado os dados forem carregados
+
+
