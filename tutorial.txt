@@ -88,4 +88,11 @@ CONSUMINDO API
 
 .criar uma condicional no JSX  com o state {loaded $$ <></>} pra só renderizar o form qunado os dados forem carregados
 
+ADD SUBMIT 
+
+.Criar função async submit estanciando o fetch API em data passando p metodo 'POST' e as outras atribuições básicas, depois estanciar data.json() em json 
+
+.Criar um button com o evento onClick={submit} chamndo o submit
+
+. criar state sending, setSending começando em false, depois pra evitar que o usuario envie varias vezes o formulário, por o setSending(true )no inicio da função submit e setSending(false )no final da função submit, depois no input button passar disebled={sending} ou seja enquanto ele tiver ativo não poderá enviar mais de uma vez 
 

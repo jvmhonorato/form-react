@@ -19,7 +19,7 @@ export const users = [
         email: 'hanna@exemple.com',
         uf:'SP',
         subscribe: true
-    }
+    },
  
 ]
 //time request API

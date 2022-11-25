@@ -20,6 +20,7 @@ const FormControlled = () => {
     const [hasError, setHasError] = useState(false)
     const [errors, setErrors] = useState({})
     const [loaded,setLoaded] = useState(false)
+    const [sending, setSending] = useState(false)
     useEffect(()=> {
         const loadData = async() => {
             const data = await fetch('/api/users/3')
@@ -60,6 +61,7 @@ const FormControlled = () => {
          console.log(form)
     }
     const onChange = (event) => {
+        
         const formField = event.target.name
         const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value
         setFormValues(curr => {
@@ -69,6 +71,20 @@ const FormControlled = () => {
             }
         }
       )
+    }
+    const submit = async() => {
+        setSending(true)
+        const data = await fetch('/api/users', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(form)
+        })
+        const json = await data.json()
+        console.log(json)
+        setSending(false)
     }
 
     return(
@@ -83,11 +99,14 @@ const FormControlled = () => {
          <input type='text'name='email' value={form.email} onChange={onChange} /><br/>
          {errors.email && <p>{errors.email}</p>}
          Desejo receber novidade por email:
-         <input type='checkbox'name='subscribe' value={form.subscribe} onChange={onChange} /><br/>
+         <input type='checkbox'name='subscribe' value={form.subscribe} checked={form.subscribe} onChange={onChange} /><br/>
          {form.subscribe && (<p>Obrigado por permitir que enviemos emailas pra vc!</p>)}
         
          <button type="button" onClick={getValue} >
             get value
+         </button>
+         <button type="button" onClick={submit} >
+            submit form
          </button>
          <select name='uf' onChange={onChange} value={form.uf}>
             <option>Selecione UF</option>

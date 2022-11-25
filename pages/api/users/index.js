@@ -5,7 +5,7 @@ export default function (req, res) {
         if(req.method ==='GET'){
                 res.status(200).json(users)
         }else if(req.method ==='POST'){
-            req.status(200).json(req.body)
+            res.status(200).json(req.body)
         }
 },delay)
 }
