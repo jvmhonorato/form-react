@@ -1,6 +1,13 @@
 import {Formik, Form, Field} from 'formik'
+import * as yup from 'yup'
 
 const ufs = ['BA','MG', 'SP','SC','RJ']
+
+//yup requirements objects
+const schema = yup.object().shape({
+    name: yup.string().required('O campo nom,e é obrigatorio'),
+    email:yup.string().required('O campo email é obrigatorio').email('Insira um email válido')
+})
 
 const FormFormik = () => {
     return (
@@ -16,13 +23,17 @@ const FormFormik = () => {
         onSubmit={async(values)=> {
             console.log(values)
         }}
+        validationSchema={schema}
         >
             {
-                ({values}) => (
+                ({values, errors,touched}) => (
                     <Form>
                         <label>
                             Name:
                           <Field type='text' name='name'/>
+                          {
+                            errors.name && touched.name ? errors.name : ''
+                          }
                         </label>
                         <label>
                             Email:
@@ -43,6 +54,7 @@ const FormFormik = () => {
                         
                         <button type='submit'>Submit</button>
                         <pre>{JSON.stringify(values, null, 2)}</pre>
+                        <pre>{JSON.stringify(errors, null, 2)}</pre>
                     </Form>
                 )
             }

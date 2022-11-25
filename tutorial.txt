@@ -107,3 +107,16 @@ FORMIK
 
 . criar a tag <Formik initialValues={modelos dos campos} onSubmit={ação a ser tomada}> criar uma {({})=> (<Form> <Field/></Form>)}
 crair os capos de inpute como <Field/>
+
+
+FORMIK YUP VALIDATION 
+
+.instalar o yup: npm install yup
+
+.importar yup e passar o schema 
+
+.No <Formik validationSchema={schema}> passar o validationSchema chamando o schema 
+
+.Passar propriedades da função principal do Formik (values, errors, touched)
+
+. usar o touched em uma condicional com operador ternário pra cada campo de input
