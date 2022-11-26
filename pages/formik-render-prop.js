@@ -28,7 +28,8 @@ const ufs = ['AC - Acre',
 'SC - Santa Catarina',
 'SP - São Paulo',
 'SE - Sergipe',
-'TO - Tocantins']
+'TO - Tocantins'
+]
 
 //yup requirements objects
 const schema = yup.object().shape({
@@ -39,7 +40,7 @@ const schema = yup.object().shape({
 const FormFormik = () => {
     return (
         <>
-        <h1>Formik Render Prop</h1>
+        <h1>Formik hooks</h1>
         <Formik
         initialValues={{
            name:'',
@@ -97,10 +98,6 @@ const FormFormik = () => {
                         <label>
                          <Field type='checkbox' name='subscribe'/>
                         </label>
-                       
-                        
-                        
-                        
                         <button type='submit'>Submit</button>
                         <pre>{JSON.stringify(values, null, 2)}</pre>
                         <pre>{JSON.stringify(errors, null, 2)}</pre>

@@ -121,6 +121,16 @@ FORMIK YUP VALIDATION
 
 . usar o touched em uma condicional com operador ternário pra cada campo de input
 
+
 START DATA SUBMIT
 
-. no render prop passar useEffect(() =>{},[]) com a função async loadData e dentro dela pegando os dados com fetch , estnacia em json() em seguida passar o setFieldValue praq inserir os valores nos campos de input
+. no render prop passar useEffect(() =>{},[]) com a função async loadData e dentro dela pegando os dados com fetch , estanciar em json(), em seguida passar o setFieldValue praq inserir os valores nos campos de input
+
+
+USFORMIK
+
+. Importar o useFormik(), estanciar o useFormik() em form, estanciar dentro de useFormik: o initialValues, onSubmit e o validationSchema e o useEffect logo abaixo 
+
+. tudo que tiver interação com o hook useFormik usar 'form.' pra linkar
+
+.usar <form onSubmit={}> como TAG pai no jsx 
