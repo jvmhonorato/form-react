@@ -127,10 +127,21 @@ START DATA SUBMIT
 . no render prop passar useEffect(() =>{},[]) com a função async loadData e dentro dela pegando os dados com fetch , estanciar em json(), em seguida passar o setFieldValue praq inserir os valores nos campos de input
 
 
-USFORMIK
+USeFORMIK
 
 . Importar o useFormik(), estanciar o useFormik() em form, estanciar dentro de useFormik: o initialValues, onSubmit e o validationSchema e o useEffect logo abaixo 
 
 . tudo que tiver interação com o hook useFormik usar 'form.' pra linkar
 
 .usar <form onSubmit={}> como TAG pai no jsx 
+
+
+REACT HOOK FORMS 
+
+.instalar: npm install react-hook-form
+
+.Criar react-hook-form.js
+
+. abstrair o register do useForm() e usar pra orientar os <input>
+
+.usar <form> como tag pai passando o  <form onSubmit={handleSubmit(onSubmit)}>, criar a função submit 
