@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.9.10",
     "formik": "^2.2.9",
     "next": "13.0.5",
     "react": "18.2.0",

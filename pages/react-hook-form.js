@@ -1,4 +1,8 @@
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+
 const ufs = ['AC - Acre',
 'AL - Alagoas',
 'AP - Amapá',
@@ -28,8 +32,30 @@ const ufs = ['AC - Acre',
 'TO - Tocantins'
 ]
 
+//yup requirements objects
+const schema = yup.object().shape({
+    name: yup.string().required('O campo nom,e é obrigatorio'),
+    email:yup.string().required('O campo email é obrigatorio').email('Insira um email válido')
+})
+
 const ReactHookForm = () => {
-    const { register, watch,handleSubmit } = useForm()
+    const { register, watch,handleSubmit, setValue, formState:{errors} } = useForm({
+        mode:'onChange',
+        resolver: yupResolver(schema)
+    })
+    useEffect(()=> {
+        const loadData = async() => {
+            const data = await fetch('/api/users/3')
+            const json = await data.json()
+            setValue('name', json.name)
+            setValue('email', json.email)
+            setValue('uf', json.uf)
+            setValue('subscribe', json.subscribe)
+             
+           
+        }
+        loadData()
+    },[]) 
     const onSubmit = async(values) => {
         const data = await fetch('/api/users', {
             method: 'POST',
@@ -49,10 +75,12 @@ const ReactHookForm = () => {
         <label>
             Name:
             <input type='text' {...register('name')}/>
+            {errors?.name && <p>{errors.name.message}</p>}
         </label>
         <label>
             Email:
             <input type='text' {...register('email')}/>
+            {errors?.email && <p>{errors.email.message}</p>}
         </label>
         <label>
             
@@ -65,7 +93,7 @@ const ReactHookForm = () => {
              </select>
         </label>
         <button type="submit">SEND</button>
-        {watch('uf')}
+       <pre>{console.log(errors)}</pre>
         </form>
         </>
     )

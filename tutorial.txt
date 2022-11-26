@@ -136,6 +136,8 @@ USeFORMIK
 .usar <form onSubmit={}> como TAG pai no jsx 
 
 
+
+//best option
 REACT HOOK FORMS 
 
 .instalar: npm install react-hook-form
@@ -145,3 +147,20 @@ REACT HOOK FORMS
 . abstrair o register do useForm() e usar pra orientar os <input>
 
 .usar <form> como tag pai passando o  <form onSubmit={handleSubmit(onSubmit)}>, criar a função submit 
+
+.passar o useEffect() pra carregar o formulário vindo da API usando o setValue
+
+Validação
+
+. instalar e importar o yup , e passar o schema
+
+. instalar : npm install @hookform/resolvers
+
+
+.importar o yupResolver, dentro do useForm() atribuir le ao resover carrengando o schema
+
+. abstrair o formState:{erros} do useForm() pra poder ler os erros de validação, e dentro do useForm() passar o mode: 'onChange'
+
+. no JSX passar: <pre>{console.log(errors)}</pre>   pra eler os erros no console
+
+. Em cada input passar a condicional: {errors?.name && <p>{errors.name.message}</p>}
